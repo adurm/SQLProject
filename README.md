@@ -1,11 +1,11 @@
-```SQL```
+
 
 # Adam Moussa SQL Practical Exercise
 
 ## Exercise 1 – Northwind Queries (40 marks: 5 for each question)
 
 #### 1.1	Write a query that lists all Customers in either Paris or London. Include Customer ID, Company Name and all address fields.
-```
+```SQL
 /* 1.1 */
 SELECT CustomerID, CompanyName, Address, City, PostalCode, Country -- All address fields
   FROM Customers 
@@ -14,7 +14,7 @@ SELECT CustomerID, CompanyName, Address, City, PostalCode, Country -- All addres
 ```
 
 #### 1.2	List all products stored in bottles.
-```
+```SQL
 /* 1.2 */
 SELECT *
   FROM Products

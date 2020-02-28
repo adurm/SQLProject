@@ -1,3 +1,5 @@
+```SQL
+
 # Adam Moussa SQL Practical Exercise
 
 ## Exercise 1 – Northwind Queries (40 marks: 5 for each question)

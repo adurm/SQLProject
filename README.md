@@ -134,8 +134,11 @@ HAVING od.UnitPrice * od.Quantity > 10000
 SELECT TOP 10 o.CustomerID, c.CompanyName,
        ROUND(SUM(od.UnitPrice*od.Quantity*(1-od.Discount)),0) AS 'Total Value'
   FROM ((Orders o
-       INNER JOIN [Order Details] od ON o.OrderID = od.OrderID)
-       INNER JOIN Customers c ON c.CustomerID=o.CustomerID)
+       INNER JOIN [Order Details] od 
+       ON o.OrderID = od.OrderID)
+       
+       INNER JOIN Customers c 
+       ON c.CustomerID=o.CustomerID)
  GROUP BY o.CustomerID, c.CompanyName, YEAR(ShippedDate)
  HAVING YEAR(ShippedDate) = (SELECT YEAR(MAX(ShippedDate)) FROM Orders)
  ORDER BY [Total Value] DESC

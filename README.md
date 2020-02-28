@@ -1,4 +1,4 @@
-```SQL
+```SQL```
 
 # Adam Moussa SQL Practical Exercise
 

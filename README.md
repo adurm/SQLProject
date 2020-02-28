@@ -100,6 +100,54 @@ SELECT OrderID, (Quantity * UnitPrice * Discount) AS 'Discount On Order'
 ```
 ## Exercise 2 – Create Spartans Table (20 marks – 10 each)
 
+#### 2.1 Write the correct SQL statement to create the following table: Spartans Table – include details about all the Spartans on this course. Separate Title, First Name and Last Name into separate columns, and include University attended, course taken and mark achieved. Add any other columns you feel would be appropriate. IMPORTANT NOTE: For data protection reasons do NOT include date of birth in this exercise.
+```SQL
+CREATE TABLE SpartaTrainees(
+    TraineeID INT NOT NULL PRIMARY KEY,
+    Title VARCHAR(5),
+    FirstName VARCHAR(15),
+    LastName VARCHAR(15),
+    UniAttended VARCHAR(50),
+    CourseTaken VARCHAR(40),
+    MarkAchieved VARCHAR(5),
+);
+```
+
+#### 2.2 Write SQL statements to add the details of the Spartans in your course to the table you have created.
+```SQL
+INSERT INTO SpartaTrainees(
+     TraineeID, Title, FirstName, LastName, UniAttended, CourseTaken, MarkAchieved
+)
+VALUES (
+    1, 'Mr', 'Mohammed', 'Uddin', 'Brighton Uni', 'Mathmetatics', '1:1'
+), (
+    2, 'Mr', 'Camile', 'Malungu', 'Oxford Uni', 'Engineering', '2:1'
+), (
+    3, 'Dr', 'Maksaud', 'Ahmed', 'Birmingham Uni', 'Physics', '2:1'
+), (
+    4, 'Mr', 'Viktor', 'Sibanda', 'Sussex Uni', 'History', '1:1'
+), (
+    5, 'Mr', 'James', 'Hovell', 'Cambridge Uni', 'Mathmetatics', '2:1'
+), (
+    6, 'Mr', 'Ash', 'Isbitt', 'Cambridge Uni', 'Physics', '2:2'
+), (
+    7, 'Mr', 'Adam', 'Moussa', 'Bristol Uni', 'History', '3:1'
+), (
+    8, 'Mr', 'Kevin', 'Monteiro', 'Bristol Uni', 'Computer Science', '2:1'
+), (
+    9, 'Miss', 'Sara', 'Abdrabu', 'Bristol Uni', 'Physical Education', '2:2'
+), (
+    10, 'Mr', 'Abdullah', 'Ayyaz', 'Southhampton Uni', 'Computer Science', '1:1'
+), (
+    11, 'Mr', 'Ayman', 'Yousfi', 'London Uni', 'History', '3:1'
+), (
+    12, 'Mr', 'Zack', 'Davenport', 'Aston Uni', 'Teaching', '3:1'
+), (
+    13, 'Mr', 'Elliot', 'Harris', 'York Uni', 'Darts', '1st'
+), (
+    14, 'Mr', 'Mahan', 'Jahromi', 'Portsmouth Uni', 'Technology', '2:1'
+);
+```
 
 ## Exercise 3 – Northwind Data Analysis linked to Excel (30 marks)
 

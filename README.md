@@ -3,8 +3,6 @@
 ## Exercise 1 – Northwind Queries (40 marks: 5 for each question)
 
 #### 1.1	Write a query that lists all Customers in either Paris or London. Include Customer ID, Company Name and all address fields.
-
-
 ```
 /* 1.1 */
 SELECT CustomerID, CompanyName, Address, City, PostalCode, Country -- All address fields
@@ -13,7 +11,7 @@ SELECT CustomerID, CompanyName, Address, City, PostalCode, Country -- All addres
     IN ('Paris', 'London')
 ```
 
-### 1.2	List all products stored in bottles.
+#### 1.2	List all products stored in bottles.
 ```
 /* 1.2 */
 SELECT *
@@ -21,6 +19,8 @@ SELECT *
  WHERE QuantityPerUnit 
   LIKE '%bottle%' -- Search for the mention of 'bottle' in QuantityPerUnit
 ```
+
+#### 1.3	Repeat question above, but add in the Supplier Name and Country.
 ```
 /* 1.3 */
 SELECT p.*, s.CompanyName AS 'Supplier Name', s.Country 
@@ -30,6 +30,8 @@ SELECT p.*, s.CompanyName AS 'Supplier Name', s.Country
  WHERE QuantityPerUnit 
   LIKE '%bottle%' -- Search for the mention of 'bottle' in QuantityPerUnit
 ```
+
+#### 1.4	Write an SQL Statement that shows how many products there are in each category. Include Category Name in result set and list the highest number first.
 ```
 /* 1.4 */
 SELECT p.CategoryID, c.CategoryName, 
@@ -41,6 +43,8 @@ SELECT p.CategoryID, c.CategoryName,
  GROUP BY p.CategoryID, c.CategoryName -- Group all unique CategoryIDs
  ORDER BY [Different Products] DESC -- Show the category with the most amount of products first
 ```
+
+#### 1.5	List all UK employees using concatenation to join their title of courtesy, first name and last name together. Also include their city of residence.
 ```
 /* 1.5 */
 SELECT CONCAT(TitleOfCourtesy, ' ', FirstName, ' ', LastName) AS 'Employee',
@@ -48,6 +52,8 @@ SELECT CONCAT(TitleOfCourtesy, ' ', FirstName, ' ', LastName) AS 'Employee',
   FROM Employees
  WHERE Country = 'UK'
 ```
+
+#### 1.6	List Sales Totals for all Sales Regions (via the Territories table using 4 joins) with a Sales Total greater than 1,000,000. Use rounding or FORMAT to present the numbers. 
 ```
 /* 1.6 */
 SELECT r.RegionID, r.RegionDescription, 
@@ -69,6 +75,8 @@ SELECT r.RegionID, r.RegionDescription,
 HAVING ROUND(SUM(od.UnitPrice * od.Quantity * (1-od.Discount)), 0) > 1000000
  ORDER BY [Sales Total] DESC
 ```
+
+#### 1.7	Count how many Orders have a Freight amount greater than 100.00 and either USA or UK as Ship Country.
 ```
 /* 1.7 */
 SELECT COUNT(*) AS 'Orders'
@@ -76,6 +84,8 @@ SELECT COUNT(*) AS 'Orders'
  WHERE Freight > 100.00 
    AND ShipCountry IN ('USA', 'UK')
 ```
+
+#### 1.8	Write an SQL Statement to identify the Order Number of the Order with the highest amount of discount applied to that order.
 ```
 /* 1.8 */
 SELECT OrderID, (Quantity * UnitPrice * Discount) AS 'Discount On Order'
@@ -86,6 +96,12 @@ SELECT OrderID, (Quantity * UnitPrice * Discount) AS 'Discount On Order'
  GROUP BY OrderID, (Quantity * UnitPrice * Discount)
  ORDER BY [Discount On Order] DESC
 ```
+## Exercise 2 – Create Spartans Table (20 marks – 10 each)
+
+
+## Exercise 3 – Northwind Data Analysis linked to Excel (30 marks)
+
+#### 3.1 List all Employees from the Employees table and who they report to. No Excel required. (5 Marks)
 ```
 /* 3.1 */
 SELECT e.EmployeeID, CONCAT(e.FirstName, ' ', e.LastName) AS 'Employee',
@@ -94,6 +110,8 @@ SELECT e.EmployeeID, CONCAT(e.FirstName, ' ', e.LastName) AS 'Employee',
        LEFT JOIN Employees s 
        ON s.EmployeeID = e.ReportsTo
 ```
+
+#### 3.2 List all Suppliers with total sales over $10,000 in the Order Details table. Include the Company Name from the Suppliers Table and present as a bar chart as below: (5 Marks)
 ```
 /* 3.2 */
 SELECT od.UnitPrice * od.Quantity AS 'sales', 
@@ -107,6 +125,8 @@ SELECT od.UnitPrice * od.Quantity AS 'sales',
  GROUP BY (od.UnitPrice * od.Quantity), CompanyName 
 HAVING od.UnitPrice * od.Quantity > 10000
 ```
+
+#### 3.3 List the Top 10 Customers YTD for the latest year in the Orders file. Based on total value of orders shipped. No Excel required. (10 Marks)
 ```
 /* 3.3 */
 SELECT TOP 10 o.CustomerID, c.CompanyName,
@@ -118,6 +138,8 @@ SELECT TOP 10 o.CustomerID, c.CompanyName,
  HAVING YEAR(ShippedDate) = (SELECT YEAR(MAX(ShippedDate)) FROM Orders)
  ORDER BY [Total Value] DESC
 ```
+
+#### 3.4 Plot the Average Ship Time by month for all data in the Orders Table using a line chart as below. (10 Marks)
 ```
  /* 3.4 */
 SELECT MONTH(ShippedDate) AS 'Month',
